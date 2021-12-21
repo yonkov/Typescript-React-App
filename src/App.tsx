@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, Fragment, useEffect } from 'react';
+import { render } from 'react-dom';
+import ListOfPosts from './components/post-loop';
+import Details from './components/details'
+import {FetchPosts} from './data'
+import { HashRouter as Router, BrowserRouter, Route, withRouter, useRouteMatch, Link, Switch } from 'react-router-dom'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	/**
+	 * State of content vs excerpt display
+	 * Putting it here to demonstrate passing change handlers
+	 */
+	const [showContent, toggleShowContent] = useState<boolean | null>(null);
+
+	return (
+			<div className="App">
+			<Switch>
+				<Route path='/' exact>
+					<ListOfPosts
+						posts={FetchPosts()}
+						showContent={showContent}
+						toggleShowContent={toggleShowContent}
+					/>
+				</Route>
+				<Route path="/post/:id">
+          <Details
+          posts={FetchPosts()}
+          showContent={showContent}
+          toggleShowContent={toggleShowContent}
+        />
+				</Route>
+			</Switch>
+			</div>
+	);
 }
 
-export default App;
+export default withRouter(App)
