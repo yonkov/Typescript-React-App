@@ -30,4 +30,5 @@ export default interface Post {
 	excerpt: PostExcerpt;
 	date: string;
 	id: number;
+    _embedded: any
 }

@@ -1,6 +1,5 @@
-import { Fragment } from 'react';
 import Post from './../shared/interfaces/post'
-import BlogPost from './single-post'
+import BlogPost from './post-excerpt'
 import { Link } from 'react-router-dom';
 
 /**
@@ -9,31 +8,17 @@ import { Link } from 'react-router-dom';
  * @param props
  */
 
- const ListOfPosts = (props: {
-	posts: Array<Post>;
-	showContent: boolean;
-	toggleShowContent: (enable: boolean) => void;
+const ListOfPosts = (props: {
+    posts: Array<Post>;
 }) => {
-	const { posts, showContent, toggleShowContent } = props;
-	return (
-		<div>
-			<button
-				onClick={(e: React.MouseEvent) => {
-					e.preventDefault();
-					toggleShowContent(!showContent);
-				}}>
-				Show Full Content
-			</button>
-			<Fragment>
-				{posts.map((post: Post) => (
-                    <>
-                    <Link to={"/post/" + post.id}><BlogPost key={post.id} post={post} showContent={showContent} />
-                    </Link>
-                    </>
-				))}
-			</Fragment>
-		</div>
-	);
+    const { posts } = props;
+    return (
+        <div>
+            {posts.map((post: Post) => (
+                <BlogPost key={post.id} post={post}></BlogPost>
+            ))}
+        </div>
+    );
 };
 
 export default ListOfPosts

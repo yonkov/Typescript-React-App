@@ -1,0 +1,33 @@
+.wrapper {
+    max-width: 1160px;
+    margin: auto;
+  }
+  
+  p {
+    font-size: 20px;
+    line-height: 1.5rem;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  article {
+    margin-bottom: 2.5rem;
+    &:after {
+      @include clearfix;
+    }
+  }
+  .site-title {
+    text-align: center;
+  }
+  .link-more {
+    display: none;
+  }
+  
+  @media(min-width: 80rem){
+    .post-thumbnail {
+      float: left;
+      width: 40%;
+      padding-right: 2rem
+    }
+  }

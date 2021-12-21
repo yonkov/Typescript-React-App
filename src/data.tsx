@@ -13,7 +13,7 @@ export function FetchPosts(){
 	/**
 	 * Get posts via remote API
 	 */
-	const url = 'https://www.newstatesman.com//wp-json/wp/v2/posts';
+	const url = 'https://try-pliska.nasiothemes.com/wp-json/wp/v2/posts?_embed';
 	useEffect(() => {
 		axios(url).then(r => {
 			setPosts(r.data);

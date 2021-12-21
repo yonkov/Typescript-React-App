@@ -1,32 +1,25 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { render } from 'react-dom';
 import ListOfPosts from './components/post-loop';
-import Details from './components/details'
+import Details from './components/post-content'
 import {FetchPosts} from './data'
-import { HashRouter as Router, BrowserRouter, Route, withRouter, useRouteMatch, Link, Switch } from 'react-router-dom'
+import { Route, withRouter, useRouteMatch, Link, Switch } from 'react-router-dom'
+import './scss/App.scss'
 
 function App() {
-	/**
-	 * State of content vs excerpt display
-	 * Putting it here to demonstrate passing change handlers
-	 */
-	const [showContent, toggleShowContent] = useState<boolean | null>(null);
 
 	return (
-			<div className="App">
+			<div className="wrapper">
+        <header><h1 className="site-title">My Awesome Typescript - React App</h1></header>
 			<Switch>
 				<Route path='/' exact>
 					<ListOfPosts
 						posts={FetchPosts()}
-						showContent={showContent}
-						toggleShowContent={toggleShowContent}
 					/>
 				</Route>
 				<Route path="/post/:id">
           <Details
           posts={FetchPosts()}
-          showContent={showContent}
-          toggleShowContent={toggleShowContent}
         />
 				</Route>
 			</Switch>
@@ -34,4 +27,4 @@ function App() {
 	);
 }
 
-export default withRouter(App)
+export default App
