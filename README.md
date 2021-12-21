@@ -1,5 +1,7 @@
 # Headless WordPress CMS with Typescript and React
 
+**Live example**: https://typescript-react-pliska.netlify.app/
+
 This is an example frontend app written in typescript and react that uses WordPress as a headless cms. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Typescript](https://www.typescriptlang.org/), by running `npx create-react-app my-app --template typescript`
 
 It is a single page application that fetches posts from a seperate WordPress [demo website](https://try-pliska.nasiothemes.com/). It takes advantage of the [WordPress rest api endpoints](https://developer.wordpress.org/rest-api/) and uses the [react router](https://v5.reactrouter.com/web/guides/quick-start) library to simulate page navigation. The app uses [typescript's types](https://www.typescriptlang.org/docs/handbook/basic-types.html) and custom interfaces to minimize potential errors and improve the project's predictability.
