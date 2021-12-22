@@ -3,7 +3,7 @@ import axios from 'axios';
 import Post from './shared/interfaces/post'
 
 
-export function FetchPosts(){
+export function FetchPostsPerPage(page:number){
 
 	/**
 	 * Put posts in state
@@ -11,15 +11,36 @@ export function FetchPosts(){
 	const [posts, setPosts] = useState<Array<Post> | null>([]);
 
 	/**
-	 * Get posts via remote API
+	 * Get posts via remote API and increment pages dynamically
 	 */
-	const url = 'https://try-pliska.nasiothemes.com/wp-json/wp/v2/posts?_embed';
+	const url = `https://www.energymonitor.ai/wp-json/wp/v2/posts?_embed&page=${page}`;
 	useEffect(() => {
 		axios(url).then(r => {
-			setPosts(r.data);
+			setPosts([...posts, ...r.data]);
 		});
 	}, [url]);
 
     return posts
+
+}
+
+export function FetchPostById(id: number){
+
+	/**
+	 * Put posts in state
+	 */
+	const [post, setPost] = useState<Post | undefined >();
+
+	/**
+	 * Get posts via remote API
+	 */
+	const url = `https://www.energymonitor.ai/wp-json/wp/v2/posts/${id}?_embed`;
+	useEffect(() => {
+		axios(url).then(r => {
+			setPost(r.data);
+		});
+	}, [url]);
+
+    return post
 
 }

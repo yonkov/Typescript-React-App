@@ -13,11 +13,13 @@ const ListOfPosts = (props: {
 }) => {
     const { posts } = props;
     return (
-        <div>
+        posts.length ?
+        (<div>
             {posts.map((post: Post) => (
                 <BlogPost key={post.id} post={post}></BlogPost>
             ))}
-        </div>
+        </div>) :
+        (<p className="text-center">Loading...</p>)
     );
 };
 

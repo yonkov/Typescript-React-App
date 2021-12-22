@@ -21,6 +21,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "strictNullChecks":false
+    "strictNullChecks":false,
+    "downlevelIteration": true
   }
 }

@@ -23,6 +23,13 @@
   .link-more {
     display: none;
   }
+  .text-center {
+    text-align: center;
+  }
+  .m-auto {
+    display: table;
+    margin: auto;
+  }
   
   @media(min-width: 80rem){
     .post-thumbnail {
